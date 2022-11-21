@@ -12,5 +12,8 @@ public class Application {
 		BridgeRandomNumberGenerator bridgeRandomNumberGenerator = new BridgeRandomNumberGenerator();
 		BridgeMaker bridgeMaker = new BridgeMaker(bridgeRandomNumberGenerator);
 		List<String> moving = bridgeMaker.makeBridge(bridgeSize);
+		
+		BridgeGame bridgeGame = new BridgeGame();
+		
     }
 }
