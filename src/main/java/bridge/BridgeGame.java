@@ -11,21 +11,27 @@ public class BridgeGame {
 	 * <p>
 	 * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
 	 */
-	public String move(List<String> movings) {
-		String result = null;
+	String lastPrint = "";
+	
+	public String getLastPrint() {
+		return lastPrint;
+	}
+	
+	public boolean move(List<String> movings) {
 		InputView inputView = new InputView();
 		OutputView outputView = new OutputView();
 		
 		for (int i = 0; i < movings.size() - 1; i++) {
-			
 			String moving = inputView.readMoving();
+			
 			if (!moving.equals(movings.get(i))) {
-				outputView.printMap(movings,false);
-				break;
+				lastPrint = outputView.printMap(movings,i,false);
+				return false;
 			}
-			outputView.printMap(movings,true);
+			
+			lastPrint = outputView.printMap(movings,i,true);
 		}
-		return result;
+		return true;
 	}
 
 	/**
