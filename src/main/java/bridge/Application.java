@@ -9,6 +9,7 @@ public class Application {
     	InputView inputView = new InputView();
     	OutputView outputView = new OutputView();
 		int bridgeSize = inputView.readBridgeSize();
+		int count = 0;
 		BridgeGame bridgeGame;
 
 		BridgeRandomNumberGenerator bridgeRandomNumberGenerator = new BridgeRandomNumberGenerator();
@@ -16,16 +17,17 @@ public class Application {
 		List<String> moving = bridgeMaker.makeBridge(bridgeSize);
 			
 		while(true) {
+			count++;
 			bridgeGame = new BridgeGame();
-			
-			if(bridgeGame.move(moving))
+			bridgeGame.move(moving);
+			if(bridgeGame.getSuccessOrNot())
 				break;
 			
 			if(!bridgeGame.retry(inputView.readGameCommand()))
 				break;
 		}
 		
-		outputView.printResult(bridgeGame);
+		outputView.printResult(bridgeGame,bridgeGame.getSuccessOrNot(),count);
 		return;
 		
     }
