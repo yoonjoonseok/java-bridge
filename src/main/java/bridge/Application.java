@@ -10,6 +10,8 @@ public class Application {
     	InputView inputView = new InputView();
     	OutputView outputView = new OutputView();
 		int bridgeSize = inputView.readBridgeSize();
+		if(bridgeSize==-1)
+			return;
 		int count = 0;
 		BridgeGame bridgeGame;
 

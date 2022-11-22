@@ -14,8 +14,11 @@ public class InputView {
     	System.out.println("다리의 길이를 입력해주세요.");
     	
     	String input = Console.readLine();
-    	if(!input.matches("-?\\d+")) 
-    		throw new IllegalArgumentException("[ERROR] 정수가 아닙니다.");
+    	if(!input.matches("-?\\d+")) {
+    		System.out.println("[ERROR] 정수가 아닙니다.");
+    		return -1;
+    		//throw new IllegalArgumentException("[ERROR] 정수가 아닙니다.");
+    	}
     	
     	int result = Integer.parseInt(input);
     	if(result<3||20<result)
